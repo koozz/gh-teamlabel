@@ -66,6 +66,9 @@ func parseTeamLabels(labels string) (map[string]string, error) {
 }
 
 func getAuthor() (string, error) {
+	if author, ok := os.LookupEnv("GITHUB_ACTOR"); ok {
+		return author, nil
+	}
 	args := []string{"pr", "view", "--json", "author", "--jq", ".author.login"}
 	stdOut, _, err := gh.Exec(args...)
 	if err != nil {
