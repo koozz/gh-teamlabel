@@ -13,16 +13,15 @@ import (
 
 func main() {
 	org := flag.String("org", "", "Organization to use.")
-	labels := flag.String("labels", "", "Comma separated list of team_slug:label pairs.")
 	flag.Parse()
 
-	usageOneLiner := "Usage: gh teamlabel -org=<org> -labels=<team_slug:label>[,<team_slug:label>]"
+	usageOneLiner := "Usage: gh teamlabel -org=<org> <team_slug:label> [<team_slug:label>]"
 	if *org == "" {
 		fmt.Printf("Error: Need to set an organization\n%s\n", usageOneLiner)
 		os.Exit(1)
 	}
 
-	teamLabels, err := parseTeamLabels(*labels)
+	teamLabels, err := parseTeamLabels(flag.Args())
 	if err != nil {
 		fmt.Printf("%s\n%s\n", err, usageOneLiner)
 		os.Exit(1)
@@ -43,19 +42,23 @@ func main() {
 		log.Fatalf("ERROR: Failed to initialize REST client: %s\n", err)
 	}
 
+	labelsToAdd := map[string]struct{}{}
 	for team, label := range teamLabels {
 		if authorInTeam(client, *org, author, team) {
 			log.Printf("Author found in team: %s\n", team)
-			addTeamLabel(label)
+			labelsToAdd[label] = struct{}{}
 		} else {
 			log.Printf("Author not found in team: %s\n", team)
 		}
 	}
+	for label, _ := range labelsToAdd {
+		addTeamLabel(label)
+	}
 }
 
-func parseTeamLabels(labels string) (map[string]string, error) {
+func parseTeamLabels(labels []string) (map[string]string, error) {
 	teamLabels := make(map[string]string)
-	for _, label := range strings.Split(labels, ",") {
+	for _, label := range labels {
 		teamLabel := strings.SplitN(label, ":", 2)
 		if len(teamLabel) < 2 {
 			return nil, fmt.Errorf("Label configuration 'team_slug:label' incorrect for: %s", label)
