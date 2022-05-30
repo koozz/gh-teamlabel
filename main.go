@@ -51,7 +51,7 @@ func main() {
 			log.Printf("Author not found in team: %s\n", team)
 		}
 	}
-	for label, _ := range labelsToAdd {
+	for label := range labelsToAdd {
 		addTeamLabel(label)
 	}
 }
