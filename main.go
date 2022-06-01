@@ -28,7 +28,7 @@ func main() {
 	}
 
 	if len(teamLabels) == 0 {
-		fmt.Printf("Need at least 1 team label pair, i.e.: -labels=team_slug:label\n%s\n", usageOneLiner)
+		fmt.Printf("Need at least 1 team label pair, i.e.: team_slug:label\n%s\n", usageOneLiner)
 		os.Exit(1)
 	}
 

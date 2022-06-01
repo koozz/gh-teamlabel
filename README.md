@@ -9,7 +9,7 @@ From the commandline:
 
 ```bash
 gh extension install koozz/gh-teamlabel # Just once
-gh teamlabel -org my-org -labels=team1:Team1Label,team2:Team2Label
+gh teamlabel -org my-org team1:Team1Label team2:Team2Label
 ```
 
 In GitHub Actions, add a step like this:
@@ -18,7 +18,7 @@ In GitHub Actions, add a step like this:
   - name: Team labeling
     run: |
       gh extension install koozz/gh-teamlabel # Just once
-      gh teamlabel -org my-org -labels=team1:Team1Label,team2:Team2Label
+      gh teamlabel -org my-org team1:Team1Label team2:Team2Label
 ```
 
 ## Adding labels
@@ -32,7 +32,7 @@ You could prepend the above scripts with calls to [gh label create](https://cli.
 gh label create Team1Label --color 336699 --description "Team one label description" --force
 gh label create Team2Label --color 336699 --description "Team two label description" --force
 
-gh teamlabel -org my-org -labels=team1:Team1Label,team2:Team2Label
+gh teamlabel -org my-org team1:Team1Label team2:Team2Label
 ```
 
 ## License
