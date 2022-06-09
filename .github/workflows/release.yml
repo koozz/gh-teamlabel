@@ -12,4 +12,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: cli/gh-extension-precompile@v1.1.2
+      - uses: cli/gh-extension-precompile@v1.2.1
