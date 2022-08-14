@@ -61,7 +61,7 @@ func parseTeamLabels(labels []string) (map[string]string, error) {
 	for _, label := range labels {
 		teamLabel := strings.SplitN(label, ":", 2)
 		if len(teamLabel) < 2 {
-			return nil, fmt.Errorf("Label configuration 'team_slug:label' incorrect for: %s", label)
+			return nil, fmt.Errorf("label configuration 'team_slug:label' incorrect for: %s", label)
 		}
 		teamLabels[teamLabel[0]] = teamLabel[1]
 	}
