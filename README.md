@@ -19,6 +19,8 @@ In GitHub Actions, add a step like this:
 
 ```yaml
   - name: Team labeling
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     run: |
       gh extension install koozz/gh-teamlabel --pin 2.0.3
       gh teamlabel -org my-org team1_slug:Team1Label team2_slug:Team2Label
