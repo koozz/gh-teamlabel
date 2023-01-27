@@ -14,6 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Pre-compile GitHub extension
-        uses: cli/gh-extension-precompile@v1.2.4
+        uses: cli/gh-extension-precompile@v1.3.0
         with:
           go_version: "1.19"
