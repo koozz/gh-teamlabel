@@ -16,8 +16,8 @@ require (
 	github.com/muesli/termenv v0.15.1 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/thlib/go-timezone-local v0.0.0-20210907160436-ef149e42d28e // indirect
-	golang.org/x/net v0.23.0 // indirect
-	golang.org/x/sys v0.18.0 // indirect
-	golang.org/x/term v0.18.0 // indirect
+	golang.org/x/net v0.38.0 // indirect
+	golang.org/x/sys v0.31.0 // indirect
+	golang.org/x/term v0.30.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
