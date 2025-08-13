@@ -1,9 +1,15 @@
 ---
-name: release
+name: Auto release
 on:
   push:
     tags:
-      - v*
+      - "v*"
+  workflow_run:
+    workflows: ["Auto tag main"]
+    types:
+      - completed
+  workflow_dispatch:
+
 permissions:
   contents: write
 
@@ -13,7 +19,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
       - name: Pre-compile GitHub extension
         uses: cli/gh-extension-precompile@v2.1.0
         with:
-          go_version: "1.19"
+          go_version_file: go.mod
