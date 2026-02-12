@@ -1,5 +1,9 @@
 # gh-teamlabel
 
+| ⚠️ Project archived |
+|---------------------|
+| Feel free to fork   |
+
 This GitHub CLI extension can be used to label a pull request with team names
 that the author of the pull request is part of.
 
